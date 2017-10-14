@@ -1,0 +1,196 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, amstext, enumitem, changepage, lipsum}
+\linespread{1.5}
+\parindent=0in
+
+\begin{document}
+3. Do CLRS 4-1 a, b, c. Show the solution using \textit{\textbf{\underline{both}}} the Master Theorem \textit{and} proof by substitution/induction.\\
+
+\textit{\textbf{4-1 Recurrence examples}}\\
+Give asymptotic upper and lower bounds for $T(n)$ in each of the following recurrences. Assume that $T(n)$ is constant for $n \leq 2$. Make your bounds as tight as possible, and justify your answers.\\
+
+\textit{\textbf{a.}} $T(n) = 2T(n / 2) + n^4$.
+\begin{adjustwidth}{2.5em}{0pt}
+We make our guess by substitution over $k$ iterations,
+\begin{align*}
+T(n) &= 2T(n / 2) + n^4\\
+&= 2[2T(n / 2^2) + (n/2)^4] + n^4\\
+&= 2^2T(n / 2^2) + \frac{2n^4}{2^4} + n^4\\
+&= 2^2[2T(n / 2^3) + (n/ 2^2)^4] + \frac{2n^4}{2^4} + n^4\\
+&= 2^3T(n / 2^3) + \frac{2^2n^4}{2^{2 \cdot 4}} + \frac{2n^4}{2^4} + n^4\\
+&\vdots\\
+&= 2^kT(n / 2^k) + n^4\sum_{i=0}^{k - 1} \frac{2^i}{2^{4i}}\\
+&= 2^kT(n / 2^k) + n^4\sum_{i=0}^{k - 1} (\frac{2}{2^{4}})^i\\
+&= 2^kT(n / 2^k) + n^4\sum_{i=0}^{k - 1} (\frac{1}{8})^i\\
+&< 2^kT(n / 2^k) + n^4\sum_{i=0}^{\infty} (\frac{1}{8})^i
+\end{align*}
+Assuming $n = 2^k$ and $T(1) = c$,
+\begin{align*}
+T(n) &< 2^{\text{lg}n}T(1) + n^4(\frac{1}{1 - \frac{1}{8}})\\
+&< 2^{\text{lg}n}T(1) + n^4(\frac{1}{7/8})\\
+&< 2^{\text{lg}n}T(1) + n^4(\frac{8}{7})\\
+&< cn + \frac{8}{7}n^4\\
+&< dn^4\\
+&= O(n^4)
+\end{align*}
+Hence, we choose $T(n) = \Theta(n^4)$ as our guess.\\
+
+%%%%%%PROOF 1 BY MASTER THEOREM
+We will first prove by the Master Theorem.\\
+\textbf{Conjecture.} $T(n) = 2T(n / 2) + n^4 = \Theta(n^4).$\\
+\textit{\textbf{Proof.}} We assume that $a = 2, b = 2, f(n) = n^4,$ and $\text{log}_b a = \text{lg}2 = 1.$ We note that $f(n) = \Omega(n^4)$ and that if we let $\epsilon = 14$, then $\Omega(n^{\text{log}_b a + \epsilon}) = \Omega(n^{\text{lg}16}) = \Omega(n^4)$. Since $f(n) = \Omega(n^{\text{log}_b a + \epsilon})$ for $\epsilon = 14 > 0$ and since $af(n / b) = 2(n / 2)^4 = 2n^4 / 16 = n^4 / 8 \leq cn^4$ for some constants $c < 1$ and all sufficiently large $n$, then $T(n) = \Theta(n^4)$. Hence, we have proven the conjecture by the Master Theorem.\hfill$\blacksquare$\\
+
+%%%%%%PROOF 1 BY SUBSTITUTION/MATHEMATICAL INDUCTION
+We will next prove by substitution and the Principle of Mathematical Induction.\\
+\textbf{Conjecture.} $T(n) = 2T(n / 2) + n^4 = \Theta(n^4).$\\
+\textit{\textbf{Proof.}} We will first prove that $T(n) = O(n^4).$ That is, we will prove that $T(n) \leq dn^4$, where $d = [(c / 8) + 1]$, by the Principle of Mathematical Induction.\\
+
+We begin with the basis case, $n = 1$. We let $T(1) = c^\prime$ such that $c^\prime \leq d$. Hence, $T(1) \leq d$ and consequently, the basis case has been proven to be true.\\
+
+We next prove the inductive step by strong induction. That is, we assume that $T(j) \leq dj^4$ for $j < k$ and prove that $T(k) \leq dk^4$. Then,
+\begin{align*}
+T(k) = 2T(k / 2) + k^4 &\leq 2c(k / 2)^4 + k^4\\
+&\leq (c / 8)k^4 + k^4\\
+&\leq [(c / 8) + 1]k^4\\
+&\leq dk^4
+\end{align*}
+Then, $T(k) \leq dk^4$, where $d = [(c / 8) + 1]$, and consequently, have have proven that $T(n) = O(n^4).$\\
+
+We will next prove that $T(n) = \Omega(n^4).$ That is, we will prove that $T(n) \geq dn^4$, where $d = [(c / 8) + 1]$, by the Principle of Mathematical Induction.\\
+
+We begin with the basis case, $n = 1$. We let $T(1) = c^\prime$ such that $c^\prime \geq d$. Hence, $T(1) \geq d$ and consequently, the basis case has been proven to be true.\\
+
+We next prove the inductive step by strong induction. That is, we assume that $T(j) \geq dj^4$ for $j < k$ and prove that $T(k) \geq dk^4$. Then,
+\begin{align*}
+T(k) = 2T(k / 2) + k^4 &\geq 2c(k / 2)^4 + k^4\\
+&\geq (c / 8)k^4 + k^4\\
+&\geq [(c / 8) + 1]k^4\\
+&\geq dk^4
+\end{align*}
+Then, $T(k) \geq dk^4$, where $d = [(c / 8) + 1]$, and consequently, have have proven that $T(n) = \Omega(n^4).$\\
+
+Since $T(n) = O(n^4)$ and $T(n) = \Omega(n^4)$, then $T(n) = \Theta(n^4)$ and consequently, we have proven the conjecture to be true.\hfill$\blacksquare$\\
+\end{adjustwidth}
+
+\textit{\textbf{b.}} $T(n) = T(7n / 10) + n$.
+\begin{adjustwidth}{2.5em}{0pt}
+We make our guess by substitution over $k$ iterations,
+\begin{align*}
+T(n) &= T(7n / 10) + n\\
+&= [T(7^2n / 10^2) + 7n/10] + n\\
+&= [T(7^3n / 10^3) + 7^2n/10^2] + 7n/10 + n\\
+&\vdots\\
+&= T(7^kn / 10^k) + n\sum_{i=0}^{k - 1} \frac{7^i}{10^i}\\
+&= T(7^kn / 10^k) + n\sum_{i=0}^{k - 1} (\frac{7}{10})^i\\
+&< T(7^kn / 10^k) + n\sum_{i=0}^{\infty} (\frac{7}{10})^i
+\end{align*}
+Assuming that $n = (\frac{10}{7})^k$ and $T(1) = c$,
+\begin{align*}
+T(n) &< T(1) + n(\frac{1}{1 - \frac{7}{10}})\\
+&< c + \frac{10}{3}n\\
+&< dn\\
+&= O(n)
+\end{align*}
+Hence, we choose $T(n) = \Theta(n)$ as our guess.\\
+
+%%%%%%PROOF 2 BY MASTER THEOREM
+We will first prove by the Master Theorem.\\
+\textbf{Conjecture.} $T(n) = T(7n / 10) + n = \Theta(n)$.\\
+\textit{\textbf{Proof.}} We assume that $a = 1, b = 10 / 7, f(n) = n,$ and $\text{log}_b a = \text{log}_{10 / 7} 1 = 0$. Note that $f(n) = \Omega(n)$ and for $\epsilon = 3 / 7$, $\Omega(n^{\text{log}_b a + \epsilon}) = \Omega(n^{\text{log}_{10 / 7} 1 + 3 / 7}) = \Omega(n^{\text{log}_{10 / 7} 10 / 7}) = \Omega(n)$. Since $f(n) = \Omega(n^{\text{log}_b a + \epsilon})$ and $7n / 10 \leq cn$ for some constants $c < 1$ (for example, $c = 8 / 10$), then $T(n) = \Theta(n)$. Hence, we have proven the conjecture by the Master Theorem.\hfill$\blacksquare$\\
+
+%%%%%%PROOF 2 BY SUBSTITUTION/MATHEMATICAL INDUCTION
+We will next prove by substitution and the Principle of Mathematical Induction.\\
+\textbf{Conjecture.} $T(n) = T(7n / 10) + n = \Theta(n)$.\\
+\textit{\textbf{Proof.}} We will first prove that $T(n) = O(n).$ That is, we will prove that $T(n) \leq dn$, where $d = [(7c/10) + 1]$, by the Principle of Mathematical Induction.\\
+
+We begin with the basis case, $n = 1$. We let $T(1) = c^\prime$ such that $c^\prime \leq d$. Hence, $T(1) \leq d$ and consequently, the basis case has been proven to be true.\\
+
+We next prove the inductive step by strong induction. That is, we assume that $T(j) \leq dj$ for $j < k$ and prove that $T(k) \leq dk$. Then,
+\begin{align*}
+T(k) = T(7k / 10) + k &\leq c(7k / 10) + k\\
+&\leq (7c / 10) k + k\\
+&\leq [(7c/10) + 1]k\\
+&\leq dk
+\end{align*}
+Then, $T(k) \leq dk$, where $d = [(7c/10) + 1]$, and consequently, have have proven that $T(n) = O(n).$\\
+
+We will next prove that $T(n) = \Omega(n).$ That is, we will prove that $T(n) \geq dn$, where $d = [(7c / 10) + 1]$, by the Principle of Mathematical Induction.\\
+
+We begin with the basis case, $n = 1$. We let $T(1) = c^\prime$ such that $c^\prime \geq d$. Hence, $T(1) \geq d$ and consequently, the basis case has been proven to be true.\\
+
+We next prove the inductive step by strong induction. That is, we assume that $T(j) \geq cj$ for $j < k$ and prove that $T(k) \geq dk$. Then,
+\begin{align*}
+T(k) = T(7k / 10) + k &\geq c(7k / 10) + k\\
+&\geq (7c / 10) k + k\\
+&\geq [(7c/10) + 1]k\\
+&\geq dk
+\end{align*}
+Then, $T(k) \geq dk$, where $d = [(7c/10) + 1]$, and consequently, have have proven that $T(n) = \Omega(n).$\\
+
+Since $T(n) = O(n)$ and $T(n) = \Omega(n)$, then $T(n) = \Theta(n)$ and consequently, we have proven the conjecture to be true.\hfill$\blacksquare$\\
+\end{adjustwidth}
+
+\textit{\textbf{c.}} $T(n) = 16T(n / 4) + n^2.$
+\begin{adjustwidth}{2.5em}{0pt}
+We make our guess by substitution over $k$ iterations,
+\begin{align*}
+T(n) &= 16T(n / 4) + n^2 \\
+&= 16[16T(n / 4^2) + (n/4)^2] + n^2\\
+&= 16^2T(n / 4^2) + 16n^2/16 + n^2\\
+&= 16^2T(n / 4^2) + 2n^2\\
+&= 16^2[16T(n / 4^3) + (n/4^2)^2] + 2n^2\\
+&= 16^3T(n / 4^3) + 16^2n^2/16^2 + 2n^2\\
+&= 16^3T(n / 4^3) + 3n^2\\
+&\vdots\\
+&= 16^kT(n / 4^k) + kn^2
+\end{align*}
+Assuming that $n = 4^k$ and $T(1) = c$,
+\begin{align*}
+T(n) &= 16^{\text{log}_4 n}T(1) + (\text{log}_4 n)n^2\\
+&= cn^{\text{log}_4 16} + n^2\text{log}_4\\
+&< dn^2\text{log}_4 n\\
+&= O(n^2\text{log} n)
+\end{align*}
+Hence, we choose $T(n) = \Theta(n^2\text{log} n)$ as our guess.\\
+
+%%%%%%PROOF 3 BY MASTER THEOREM
+We will first prove by the Master Theorem.\\
+\textbf{Conjecture.} $T(n) = 16T(n / 4) + n^2 = \Theta(n^2 \text{log}n).$\\
+\textit{\textbf{Proof.}} We assume that $a = 16, b = 4, f(n) = n^2,$ and $\text{log}_b a = \text{log}_4 16 = 2$. Note that $f(n) = \Theta(n^2)$ and that $\Theta(n^{\text{log}_b a}) = \Theta(n^2)$. Since $f(n) = \Theta(n^{\text{log}_b a})$, then $T(n) = \Theta(n^2 \text{log} n)$. Hence, we have proven the conjecture to be true by the Master Theorem.\hfill$\blacksquare$\\
+
+%%%%%PROOF 3 BY SUBSTITUTION/MATHEMATICAL INDUCTION
+We will next prove by substitution and the Principle of Mathematical Induction.\\
+\textbf{Conjecture.} $T(n) = 16T(n / 4) + n^2 = \Theta(n^2 \text{log}n).$\\
+\textit{\textbf{Proof.}} We will first prove that $T(n) = O(n^2 \text{log}n).$ That is, we will prove that $T(n) \leq cn^2\text{log}_4 n$ by the Principle of Mathematical Induction.\\
+
+We begin with the basis case, $n = 2$. We let $T(2) = c^\prime$ such that $c^\prime \leq 2c$ (that is, $c = 4c(1/2)$). Hence, $T(2) \leq c$ and consequently, the basis case has been proven to be true.\\
+
+We next prove the inductive step by strong induction. That is, we assume that $T(j) \leq cj^2\text{log}_4 j$ for $j < k$ and prove that $T(k) \leq ck^2\text{log}_4 k$. Then,
+\begin{align*}
+T(k) = 16T(k / 4) + k^2 &\leq 16c(k/4)^2 \text{log}_4 (k / 4) + k^2\\
+&\leq 16c(k^2/16) \text{log}_4 (k / 4) + k^2\\
+&\leq ck^2\text{log}_4 (k / 4) + k^2\\
+&\leq ck^2\text{log}_4 k - ck^2 + k^2\\
+&\leq ck^2\text{log}_4 k
+\end{align*}
+for $c \geq 1$. Then, $T(k) \leq ck^2\text{log}_4 k$ and $T(n) = O(n^2\text{log} n)$ by the Principle of Mathematical Induction.\\
+
+We will next prove that $T(n) = \Omega(n^2 \text{log}n).$ That is, we will prove that $T(n) \geq cn^2\text{log}_4 n$ by the Principle of Mathematical Induction.\\
+
+We begin with the basis case, $n = 2$. We let $T(2) = c^\prime$ such that $c^\prime \geq 2c$ (that is, $c = 4c(1/2)$). Hence, $T(2) \geq c$ and consequently, the basis case has been proven to be true.\\
+
+We next prove the inductive step by strong induction. That is, we assume that $T(j) \geq cj^2\text{log}_4 j$ for $j < k$ and prove that $T(k) \geq ck^2\text{log}_4 k$. Then,
+\begin{align*}
+T(k) = 16T(k / 4) + k^2 &\geq 16c(k/4)^2 \text{log}_4 (k / 4) + k^2\\
+&\geq 16c(k^2/16) \text{log}_4 (k / 4) + k^2\\
+&\geq ck^2\text{log}_4 (k / 4) + k^2\\
+&\geq ck^2\text{log}_4 k - ck^2 + k^2\\
+&\geq ck^2\text{log}_4 k
+\end{align*}
+for $c \leq 1$. Then, $T(k) \geq ck^2\text{log}_4 k$ and $T(n) = \Omega(n^2\text{log} n)$ by the Principle of Mathematical Induction.\\
+
+Since $T(n) = O(n^2\text{log} n)$ and $T(n) = \Omega(n^2\text{log} n)$, then $T(n) = \Theta(n^2\text{log} n)$ and consequently, we have proven the conjecture to be true.\hfill$\blacksquare$\\
+\end{adjustwidth}
+\end{document}

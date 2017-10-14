@@ -1,0 +1,14 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, amstext}
+\linespread{1.5}
+\parindent=0in
+
+\begin{document}
+2. Prove the following\\
+$T(n) = 4T(n / 2) + n = \Theta(n^2).$\\
+
+\textbf{Conjecture.} $T(n) = 4T(n / 2) + n = \Theta(n^2).$\\
+\textit{\textbf{Proof.}} We will prove the conjecture by the Master Theorem. We assume that $a = 4, b = 2, f(n) = n,$ and $\text{log}_b a = \text{lg} 4 = 2$. Note that $f(n) = O(n)$ and that letting $\epsilon = 2$, $O(n^{\text{log}_b a - \epsilon}) = O(n^{\text{lg} 2}) = O(n).$ Since $f(n) = O(n^{\text{log}_b a - \epsilon}),$ then $T(n) = \Theta(n^{\text{log}_b a}) = \Theta(n^2).$ Hence, we have proven the conjecture by the Master Theorem.\hfill$\blacksquare$
+\end{document}

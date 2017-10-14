@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, amstext, color, changepage, lipsum, mathtools}
+\linespread{1.5}
+\parindent=0in
+
+\begin{document}
+4. Consider the following algorithm, which is a divide-and-conquer sorting algorithm. First, derive a recurrence relation for the algorithm. Then solve the recurrence using the Master Theorem.\\
+
+%%%%%%BEGIN ALGORITHM
+\definecolor{darkgreen}{rgb}{0, .4, 0}
+\textcolor{darkgreen}{// Sort the array A, but only the range starting at index i and ending}\\
+\textcolor{darkgreen}{// at index j.}\\
+void LLDSort(Array $A$, int $i$, int $j$)
+\begin{adjustwidth}{2.5em}{0pt}
+if $A[i] > A[j]$
+\end{adjustwidth}
+\begin{adjustwidth}{5.0em}{0pt}
+swap($A[i], A[j]$)
+\end{adjustwidth}
+\begin{adjustwidth}{2.5em}{0pt}
+if $i < j-1$
+\end{adjustwidth}
+\begin{adjustwidth}{5.0em}{0pt}
+\textcolor{darkgreen}{// $t$ will be 1/3 the size of the array segment}\\
+\textcolor{darkgreen}{// (rounded down)}\\
+$t \leftarrow$ floor( ($j-i$+1)/3 )\\
+LDDSort($A, i, j-t$)\\
+LDDSort($A, i+t, j$)\\
+LDDSort($A, i, j-t$)
+\end{adjustwidth}
+
+We assume that to make one comparison, the time taken is $c$, and that to make one swap between two elements, the time taken is $c$. Since $i$ is the beginning of the array segment and $j$ is the end of the array segment, the second condition $i < j - 1$ is true whenever, by algebra
+\begin{align*}
+i &< j - 1\\
+1 &< j - i.
+\end{align*}
+Hence, if the array segment's input size is $n = j - i + 1$, if we add $1$ to both sides,
+\begin{align*}
+2 &< j - i + 1\\
+2 &< n.
+\end{align*}
+
+Then in order for the second condition to be true, $n$ must not be 2. That is, recursion ends when $n \leq 2$. Hence, $T(n) = 3c = \Theta(1)$ if $n \leq 2$.\\
+
+When the algorithm recurses, we let $t = n/3 = (j - i + 1)/3$. Then, the recurrence LLDSort($A, i, j-t$) has input size
+\begin{align*}
+(j - t) - i + 1 &= (j - n/3) - i + 1 \\
+&= (j - (j - i + 1)/3) - i + 1\\
+&= j - j/3 - i/3 - 1/3 - i + 1\\
+&= 2j/3 - 2i/3 + 2/3\\
+&= (2/3)(j - i + 1)\\
+&= (2/3)n.
+\end{align*}
+Likewise, the recurrence LLDSort($A,i+t,j$) has input size
+\begin{align*}
+j - (i + t) + 1 &= j - (i + n/3) + 1\\
+&= j - (i + (j - i + 1)/3) + 1\\
+&= j - i - j/3 + i/3 -1/3 + 1\\
+&= 2j/3 -2i/3 + 2/3\\
+&= 2/3(j - i + 1)\\
+&= (2/3)n.
+\end{align*}
+Therefore, whenever $n > 2$, the recurrence always has input size $(2/3)n$. Since the algorithm sorts without splitting or merging, we do not need to add a constant to the end. Then, for $n > 2$, $T(n) = T(2n/3) + T(2n/3) + T(2n/3)$.\\
+
+In general, we get the recurrence
+\begin{equation}
+T(n) =
+\begin{dcases*}
+\Theta(1) & if $n \leq 2$,\\
+3T(2n/3) & otherwise.
+\end{dcases*}
+\end{equation}
+\\We will now solve recurrence (\textcolor{blue}{1}) using the Master Theorem.\\
+\textit{\textbf{Proof.}} We assume that $a = 3, b = 3/2, f(n) = 0,$ and $\text{log}_b a = \text{log}_{3/2} 3 \approx 2.71$. Note that $f(n) = O(1)$ and that if we let $\epsilon = 2$, then $O(n^{\text{log}_b a - \epsilon}) = O(n^{\text{log}_{3/2} 3 - 2}) = O(n^{\text{log}_{3/2} 1}) = O(n^0) = O(1).$ Since $f(n) = O(n^{\text{log}_b a - \epsilon})$, then $T(n) = \Theta(n^{\text{log}_b a}) = \Theta(n^{\text{log}_{3/2} 3}).$ Hence, we have proven that $T(n) = \Theta(n^{\text{log}_{3/2} 3})$ by the Master Theorem.\hfill$\blacksquare$
+\end{document}
