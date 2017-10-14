@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, enumitem, color}
+\linespread{1.5}
+\parindent=0in
+
+\begin{document}
+(8) Sundstrom 4.3.21\\
+\textbf{Evaluation of proofs}
+See the instructions for Exercise (\textcolor{blue}{19}) on page \textcolor{blue}{100} from Section \textcolor{blue}{3.1}.
+\begin{enumerate}[leftmargin=35px,label=(\textbf{\alph*})]
+\item Let $f_n$ be the $n$th Fibonacci number, and let $\alpha$ be the positive solution of the equation $x^2 = x + 1$. So $\alpha = \frac{1 + \sqrt{5}}{2}.$ For each natural number $n, f_n \leq \alpha^{n - 1}.$\\
+\textit{\textbf{Proof.}} We will use a proof by mathematical induction. For each natural number $n$, we let $P(n)$ be, "$f_n \leq \alpha^{n - 1}.$"\\
+We first note that $P(1)$ is true since $f_1 = 1$ and $\alpha^0 = 1$. We also notice that $P(2)$ is true since $f_2 = 1$ and, hence, $f_2 \leq \alpha^1$.\\
+We now let $k$ be a natural number with $k \geq 2$ and assume that $P(1), P(2),\ldots, P(k)$ are all true. We now need to prove that $P(k + 1)$ is true or that $f_{k + 1} \leq \alpha^k.$\\
+Since $P(k - 1)$ and $P(k)$ are true, we know that $f_{k - 1} \leq \alpha^{k - 2}$ and $f_k \leq \alpha^{k - 1}.$ Therefore,
+\begin{align*}
+f_{k + 1} &= f_k + f_{k - 1}\\
+f_{k + 1} &\leq \alpha^{k - 1} + \alpha^{k - 2}\\
+f_{k + 1} &\leq \alpha^{k - 2}(\alpha + 1).
+\end{align*}
+We now use the fact that $\alpha + 1 = \alpha^2$ and the preceding inequality to obtain
+\begin{align*}
+f_{k + 1} &\leq \alpha^{k - 2}\alpha^2\\
+f_{k + 1} &\leq \alpha^k.
+\end{align*}
+This proves that if $P(1), P(2),\ldots, P(k)$ are true, then $P(k + 1)$ is true. Hence, by the Second Principle of Mathematical Induction, we conclude that for each natural number $n, f_n \leq \alpha^{n - 1}.$\hfill$\blacksquare$
+\end{enumerate}
+
+(a) This is a well written and correct proof.
+\end{document}

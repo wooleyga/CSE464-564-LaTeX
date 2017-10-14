@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, enumitem, MnSymbol}
+\linespread{1.5}
+\parindent=0in
+
+\begin{document}
+%statement of the problem type
+(3) Do problem Sundstrom-3.1.19\\
+\textbf{Evaluation of proofs}\\
+This type of exercise will appear frequently in the book. In each case, there is a proposed proof of a proposition. However, the proposition may be true or may be false.
+
+\begin{itemize}
+\item If a proposition is false, the proposed proof is, of course, incorrect. In this situation, you are to find the error in the proof and then provide a counterexample showing that the proposition is false.
+
+\item If a proposition is true,the proposed proof may still be incorrect.In this case, you are to determine why the proof is incorrect and then write a correct proof using the writing guidelines that have been presented in this book.
+
+\item If a proposition is true and the proof is correct, you are to decide if the proof is well written or not. If it is well written, then you simply must indicate that this is an excellent proof and needs no revision. On the other hand, if the proof is not well written, then you must then revise the proof so by writing it according to the guidelines presented in this text.
+\end{itemize}\par
+
+%%%%%PROPOSITION 1
+\begin{enumerate}[leftmargin=35px,label=(\textbf{\alph*})]
+\item \textbf{Proposition.} If $m$ is an even integer, then ($5m+4$) is an even integer.\\
+
+\textit{\textbf{Proof.}} We see that $5m+4 = 10n+4 = 2(5n+2)$. Therefore, $(5m+4)$ is an even integer.\hfill$\blacksquare$
+
+%%%%%PROPOSITION 2
+\item \textbf{Proposition.} For all real number $x$ and $y$, if $x \neq y, x > 0$ and $y > 0,$ then $\frac{x}{y}+\frac{y}{x} > 2$\\
+
+\textit{\textbf{Proof.}} Since $x$ and $y$ are positive real numbers, $xy$ is positive and we can multiply both sides of the inequality by $xy$ to obtain\\
+\begin{align*}
+(\frac{x}{y} + \frac{y}{x}) \cdot xy &> 2 \cdot xy\\
+x^2 + y^2 &> 2xy
+\end{align*}
+By combining all terms on the left side of the inequality, we see that $x^2 - 2xy + y^2 > 0$ and then by factoring the left side, we obtain$(x - y)^2 > 0$.
+Since $x \neq y, (x - y) \neq 0$ and so $(x - y)^2 > 0$. This proves that if $x \neq y, x > 0$, and $y > 0$, then $(\frac{x}{y} + \frac{y}{x}) > 2$\hfill$\blacksquare$
+
+%%%%%PROPOSITION 3
+\item \textbf{Proposition.} For all integers $a, b,$ and $c$, if $a \divides (bc)$, then $a \divides b$ or $a \divides c$ \\
+\textit{\textbf{Proof.} } We assume that $a, b$, and $c$ are integers and that $a$ divides $bc$.
+So there exists an integer $k$ such that $bc$ = $ka$. We now factor $k$ as $k = mn$, where $m$ and $n$ are integers. We then see that\\
+\centerline{$bc = m n a$}\\
+This means that $b = ma$ or $c = na$ and hence, $a \divides b$ or $a \divides c$. \hfill$\blacksquare$
+
+%%%%%PROPOSITION 4
+\item \textbf{Proposition.} For all positive integers $a, b$ and $c$, $(a^b)^c = a^{(b^c)}$. \\
+This proposition is false as is shown by the following counterexample:\\
+If we let $a = 2$, $b = 3$, and $c = 2$, then\\
+\centerline{${(a^b)}^c = a^{(b^c)}$}\\
+\centerline{${(2^3)}^2 = 2^{(3^2)}$}\\
+\centerline{$8^2 = 2 ^9$}\\
+\centerline{$64 \neq 512$}
+
+\end{enumerate}
+
+%%%%%WORK
+\textbf{(a)}\\This proof is correct, but it is not well written. Presented is a formal proof that is more well written than the given proof.\\
+
+\textbf{Proposition.} If $m$ is an even integer, then $(5m + 4)$ is an even integer.\\
+\textit{\textbf{Proof.}} We assume that $m$ is an even integer. That is to say, for $n \in \mathbb{Z}$, $m$ can be expressed as \begin{equation*}
+m = 2n.
+\end{equation*}
+Using algebra, we obtain
+\begin{align*}
+5m + 4 &= 10n + 4\\
+&= 2(5n + 2).
+\end{align*}
+
+Since $n \in \mathbb{Z}$, $2(5n + 2)$ is an integer multiple of two and hence, an even integer. $\therefore$ $5m + 4$ is an even integer when m is an even integer.\hfill$\blacksquare$
+
+\textbf{(b)}\\
+This is a well written and correct proof.\\
+
+\textbf{(c)}\\
+This proposition is false as shown by the following counterexample:\\
+Let $a = 6, b = 3,$ and $c = 4$. The statement $6 \divides 3 \cdot 4$ is true, but the statements $6 \divides 3$ and $6 \divides 4$ are false.\\ \\
+The proof is at fault when factoring the constant $k$ as $mn$. Although $k$ can be expressed in that manner, it is not true that $b = ma$ or $c = na$ display proof of those two variables being divisible by $a$. If we complete the algebra, we will obtain
+\begin{center}
+$\frac{a}{b} = \frac{1}{m}$ and
+$\frac{a}{c} = \frac{1}{n}.$
+\end{center}
+
+Since $m, n \in \mathbb{Z}$, the fractions $\frac{1}{m}$ and $\frac{1}{n}$ are not  integers.
+
+\textbf{(d)}\\
+This is a well written and correct counterexample.
+
+\end{document}

@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, enumitem, color}
+\linespread{1.5}
+\parindent=0in
+
+\begin{document}
+%statement of the problem type
+(4) Do problem Sundstrom 3.3.20\\
+\textbf{20. Evaluation of proofs}\\
+See the instructions for Exercise (\textcolor{blue}{19}) on page \textcolor{blue}{100} from Section \textcolor{blue}{3.1}.
+
+%%%%%PROPOSITION 1
+\begin{enumerate}[leftmargin=20px,label=(\textbf{\alph*})]
+\item \textbf{Proposition.} For each real number $x$, if $x$ is irrational and $m$ is an integer, then $mx$ is irrational.\\
+
+\textit{\textbf{Proof.}} We assume that $x$ is a real number and is irrational. This means that for all integers $a$ and $b$ with $b \neq 0$, $x \neq \frac{a}{b}$. Hence, we conclude that $mx \neq \frac{ma}{b}$ and therefore, $mx$ is irrational.\hfill$\blacksquare$
+
+%%%%%PROPOSITION 2
+\item \textbf{Proposition.} For all real numbers $x$ and $y$, if $x$ is irrational and $y$ is rational, then $x + y$ is irrational.\\
+
+\textit{\textbf{Proof.}} We will use a proof by contradiction. So we assume that the proposition is false, which means that there exist real numbers $x$ and $y$ where $x \not \in \mathbb{Q}$, $y \in \mathbb{Q}$, and $x + y \in \mathbb{Q}$. Since the rational numbers are closed under subtraction and $x + y$ and $y$ are rational, we see that 
+\begin{equation*}
+(x + y) - y \in \mathbb{Q}
+\end{equation*}
+However, $(x + y) - y = x$, and hence we can conclude that $x \in \mathbb{Q}$. This is a contradiction to the assumption that $x \not \in \mathbb{Q}$. Therefore, the proposition is not false, and we have proven that for all real numbers $x$ and $y$, if $x$ is irrational and $y$ is rational, then $x + y$ is irrational.\hfill$\blacksquare$
+
+%%%%%PROPOSITION 3
+\item \textbf{Proposition.} For each real number $x$, $x(1 - x) \leq \frac{1}{4}$.\\
+\textit{\textbf{Proof.}} A proof by contradiction will be used. So we assume that the proposition is false. That means there exists a real number $x$ such that $x(1 - x) > \frac{1}{4}$. If we multiply both sides of the inequality by 4, we obtain $4x(1 - x) > 1$. However, if we let $x = 3$, we see that
+\begin{align*}
+4x(1 - x) &> 1\\
+4 \cdot 3(1 - 3) &> 1\\
+-12 &> 1
+\end{align*} 
+The last inequality is clearly a contradiction and so we have proved the proposition.\hfill$\blacksquare$
+\end{enumerate}
+
+\textbf{(a)}
+This is a false proposition and consequently an incorrect proof. To show this, consider the case when $m = 0$. That is, when $mx = 0 \cdot x = 0$. Since 0 can be written in the form of $0 = \frac{a}{b}$ such that $b \neq 0$, it is considered rational. For all cases, so long as $a = 0$ and $b \neq 0$, the resultant number is 0. Therefore, the proposition is disproved.\\
+
+The proof is at fault by not considering the case where $m = 0$. While the algebra in the proof is true for all $m \in \mathbb{Z}$ such that $m \neq 0$, the proposition includes the case $m = 0$ and consequently, the algebra does not prove the proposition.
+
+\textbf{(b)} 
+This is a well written and correct proof.
+
+\textbf{(c)}
+This is a well written and correct proof.
+
+\end{document}

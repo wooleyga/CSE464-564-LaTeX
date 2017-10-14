@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, enumitem, color}
+\linespread{1.5}
+\parindent=0in
+
+\begin{document}
+(9) Prove the sum of $1 + 2 + 3 +\ldots+ n = n(n + 1) / 2$ using mathematical induction.\\
+
+\textbf{Proposition.} For each $n \in \mathbb{N}, 1 + 2 + 3 +\ldots+ n = \frac{n(n + 1)}{2}$.\\
+\textit{\textbf{Proof.}} We will use mathematical induction to prove the proposition. For each $n \in \mathbb{N}$, we let $P(n)$ be
+\begin{equation*}
+1 + 2 + 3 +\ldots+ n = \frac{n(n + 1)}{2}.
+\end{equation*}
+We begin with the basis step. That is, we prove that $P(1)$ is true. Notice that $1 = \frac{1 \cdot (1 + 1)}{2}$. Therefore, $P(1)$ is true and we have proved the basis step.\\
+We next prove the inductive step. That is, for each $k \in \mathbb{N}$ if $P(k)$ is true, then $P(k + 1)$ is true. We assume that $P(k)$ is
+\begin{equation}
+1 + 2 + 3 +\ldots+ k = \frac{k(k + 1)}{2}.
+\end{equation}
+We assume that $P(k + 1)$ is
+\begin{align}
+1 + 2 + 3 +\ldots+ k + (k + 1) &= \frac{(k + 1)((k + 1) + 1)}{2}\nonumber \\
+&= \frac{(k + 1)(k + 2)}{2}
+\end{align}
+Notice that $P(k + 1) = P(k) + (k + 1)$. So, if we add $(k + 1)$ to $P(k)$, we will show the algebraic expression for $P(k + 1)$. So,
+\begin{align*}
+P(k) + (k + 1) &= \frac{k(k + 1)}{2} + k + 1\\
+&= \frac{k^2 + k + 2k + 2}{2}\\
+&= \frac{k^2 + 3k + 2}{2}\\
+&= \frac{(k + 1)(k + 2)}{2}
+\end{align*}
+Comparing the result to equation (\textcolor{blue}{2}), we have shown that if $P(k)$ is true, then $P(k + 1)$ is true. Consequently, we have proved the inductive step. Hence, we have proved the basis step and the inductive step. Therefore, we have proved the proposition by the Principle of Mathematical Induction.\hfill$\blacksquare$
+
+\end{document}

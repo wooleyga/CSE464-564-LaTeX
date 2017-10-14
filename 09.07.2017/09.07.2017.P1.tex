@@ -1,0 +1,106 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\linespread{1.3}
+\parindent=0in
+
+\begin{document}
+%statement of the problem
+(1) Do the problem from Sun 1.2-3\\
+
+Construct a know-show table for each of the following statements and then write a formal proof for one of the statements.\\
+
+\textbf{(a)} If $m$ is an even integer and $n$ is an integer, then $m \cdot n$ is an even integer.
+
+\textbf{(b)} If $n$ is an even integer, then $n^{2}$ is an even integer.
+
+\textbf{(c)} If $n$ is an odd integer, then $n^{2}$ is an odd integer.\\
+
+%start of know-show table 1
+Know-show table \textbf{(a)}
+\begin{center}
+\begin{tabular}{ | l | l | l | }
+\hline
+\textbf{Step} & \textbf{Know} & \textbf{Reason}\\
+\hline
+P  & $m$ is an even integer, $n$ is an integer  & Hypothesis\\
+\hline
+P1 & $m = 2 \cdot k,$ for $k \in \mathbb{Z}$ & Definition of an even integer\\
+\hline
+P2 & $m \cdot n = (2 \cdot k) \cdot n$ & Substitution\\
+\hline 
+P3 & $m \cdot n = 2 \cdot (k \cdot n)$ & Algebra\\
+\hline
+Q & $m \cdot n$ is an integer multiple of two and hence, even & Definition of an even integer\\
+\hline
+\textbf{Step} & \textbf{Show} & \textbf{Reason}\\
+\hline
+\end{tabular}
+\end{center}
+
+%start of know-show table 2
+Know-show table \textbf{(b)}
+\begin{center}
+\begin{tabular}{ | l | l | l | }
+\hline
+\textbf{Step} & \textbf{Know} & \textbf{Reason}\\
+\hline
+P  & $n$ is an even integer & Hypothesis\\
+\hline
+P1 & $n = 2 \cdot m,$ for $m \in \mathbb{Z}$ & Definition of an even integer\\
+\hline
+P2 & $n^2 = (2 \cdot m) \cdot n$ & Substitution\\
+\hline 
+P3 & $n^2 = 2 \cdot (m \cdot n)$ & Algebra\\
+\hline
+Q & $n^2$ is an integer multiple of two and hence, even & Definition of an even integer\\
+\hline
+\textbf{Step} & \textbf{Show} & \textbf{Reason}\\
+\hline
+\end{tabular}
+\end{center}
+
+%start of know-show table 3
+Know-show table \textbf{(c)}
+\begin{center}
+\begin{tabular}{ | l | l | l | }
+\hline
+\textbf{Step} & \textbf{Know} & \textbf{Reason}\\
+\hline
+P  & $n$ is an odd integer & Hypothesis\\
+\hline
+P1 & $n = 2 \cdot m + 1,$ for $m \in \mathbb{Z}$ & Definition of an odd integer\\
+\hline
+P2 & $n^2 = (2 \cdot m + 1) \cdot n$ & Substitution\\
+\hline 
+P3 & $n^2 = 2 \cdot m \cdot n + n$ & Algebra\\
+\hline
+P4 & $2 \cdot m \cdot n$ is even, as $m, n \in \mathbb{Z}$ & Definition of an even integer\\
+\hline
+P5 & $n^2$ is $n$ greater than an even integer. & Algebra\\
+\hline
+Q & Since $n$ is odd and $n^2$ is $n$ greater than an even integer, $n^2$ is odd. & Definition of an odd integer\\
+\hline
+\textbf{Step} & \textbf{Show} & \textbf{Reason}\\
+\hline
+\end{tabular}
+\end{center}
+
+%start of formal proof
+\textbf{\\Theorem.} \textit{If $m$ is an even integer and $n$ is an integer, then $m \cdot n$ is an even integer.}\\
+\textit{\textbf{Proof.}} We assume that $m$ is an even integer and $n$ is an integer. Since $m$ is an even integer, there exists $k \in \mathbb{Z}$ such that
+\begin{equation*}
+m = 2 \cdot k.
+\end{equation*}
+
+Using algebra, we obtain
+\begin{align*}
+m \cdot n  &= (2 \cdot k) \cdot n \\
+&= 2 \cdot (k \cdot n).
+\end{align*}
+
+Since $k, n \in \mathbb{Z}$, we can conclude $k \cdot n \in \mathbb{Z}$ and hence, $2 \cdot (k \cdot n)$ is a multiple of two. By definition, all  multiples of two are even integers. Therefore, $m \cdot n$ is even.\hfill$\blacksquare$
+%end of proof
+
+\end{document}
+

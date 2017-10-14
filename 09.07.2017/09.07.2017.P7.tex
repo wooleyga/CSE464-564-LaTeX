@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, enumitem, color}
+\linespread{1.5}
+\parindent=0in
+
+\begin{document}
+(7) Do problem Sundstrom 4.2.17\\
+\textbf{Evaluation of proofs}\\
+See the instructions for Exercise (\textcolor{blue}{19}) on page \textcolor{blue}{100} from Section \textcolor{blue}{3.1}.
+\begin{enumerate}[leftmargin=35px,label=(\textbf{\alph*})]
+\item For each natural number $n$ with $n \geq 2, 2^n > 1 + n.$\\
+\textit{\textbf{Proof.}} We let $k$ be a natural number and assume that $2^k > 1 + k.$ Multiplying both sides of this inequality by $2$, we see that $2^{k+1} > 2 + 2k.$ However, $2 + 2k > 2 + k$ and, hence,
+\begin{equation*}
+2^{k+1} > 1 + (k + 1)
+\end{equation*}
+By mathematical induction, we conclude that $2^n > 1 + n$.\hfill$\blacksquare$
+
+\item Each natural number greater than or equal to 6 can be written as the sum of natural numbers, each of which is a 2 or a 5.
+
+\textbf{\textit{Proof.}} We will use a proof by induction. For each natural number $n$, we let $P(n)$ be, "There exist non-negative integers $x$ and $y$ such that $n = 2x + 5y$." Since
+\begin{align*}
+    6 &= 3 \cdot 2 + 0 \cdot 5 & 7 &= 2 + 5\\
+    8 &= 4 \cdot 2 + 0 \cdot 5 & 9 &= 2 \cdot 2 + 1 \cdot 5
+\end{align*}
+we see that $P(6)$, $P(7)$, $P(8)$, and $P(9)$ are true.\\
+We now suppose that for some natural number $k$ with $k \geq 10$ that $P(6)$, $P(7), \dots P(k)$ are true. Now
+\begin{equation*}
+k + 1 = (k - 4) + 5
+\end{equation*}
+
+Since $k \geq 10$, we see that $k-4 \geq 6$ and, hence, $P(k - 4)$ is true. So $k - 4 = 2x + 5y$ and, hence, 
+\begin{equation*}
+k - 1 = (k - 4) + 5
+\end{equation*}
+Since $k \geq 10$, we see that $k - 4 \geq 6$ and, hence, $P(k - 4)$ is true. So $k - 4 = 2x + 5y$ and, hence, 
+\begin{align*}
+k+1 &= (2x + 5y) + 5\\
+&= 2x + 5(y + 1)
+\end{align*}
+
+This proves that $P(k+1)$ is true, and hence, by the Second Principle of Mathematical Induction, we have proved that for each natural number $n$ with $n \geq 6$, there exist non-negative integers $x$ and $y$ such that $n = 2x + 5y$. \hfill$\blacksquare$\\
+\end{enumerate}
+
+(a) The proposition is correct but the proof is invalid as it does not prove the basis step of the Principle of Mathematical Induction. We will prove the proposition.\\
+\textbf{Proposition.} For each natural number $n$ with $n \geq 2, 2^n > 1 + n.$\\
+\textit{\textbf{Proof.}} We will prove the proposition by using the Principle of Mathematical Induction. For each $n \in \mathbb{N}$ such that $n \geq 2$, we let $P(n)$ be
+\begin{equation*}
+2^n > 1 + n.
+\end{equation*}
+We will first prove the basis step. That is, we prove the case when $n = 2.$ Note that $2^2 = 4 > 1 + 2 = 3.$ Since this inequality is true, we have proven $P(2)$ and consequently, the basis step.\\
+
+We will next prove the inductive step. That is, we will prove that for each $k \in \mathbb{N}$ such that $k \geq 2$ if $P(k)$ is true, then $P(k + 1)$ is true. We assume that $P(k)$ is
+\begin{equation}
+2^k > 1 + k
+\end{equation}
+and that $P(k + 1)$ is
+\begin{align}
+2^{k + 1} &> 1 + (k + 1)\nonumber \\
+&> 2 + k.
+\end{align}
+Multiplying both sides of $P(k)$ by 2, we obtain
+\begin{align*}
+2^k \cdot 2 &> 2(1 + k)\\
+2^{k + 1} &> 2 + 2k
+\end{align*}
+Since $2 + 2k > 2 + k$, it follows that
+\begin{equation*}
+2^{k + 1} > 2 + 2k > 2 + k\\
+\end{equation*}
+Since $2^{k + 1} > 2 + k$ is the same as equation (\textcolor{blue}{2}), we have shown that if $P(k)$ is true, then $P(k + 1)$ is true. Hence, we have proved the inductive step and consequently, we have proved the proposition by the Principle of Mathematical Induction.\hfill$\blacksquare$ \\
+
+(b) This is a true proposition with a correct proof, but the proof could be written better. We will prove the proposition.\\
+\textbf{Proposition.} Each natural number greater than or equal to 6 can be written as the sum of natural numbers, each of which is a 2 or a 5.\\
+\textit{\textbf{Proof.}} We will prove the proposition by the Principle of Mathematical Induction. For each $n \in \mathbb{N}$, we let $P(n)$ be, "There exist non-negative integers $x$ and $y$ such that $n = 2x + 5y.$" We begin with the basis step. Since
+\begin{align*}
+6 &= 3 \cdot 2 + 0 \cdot 5 & 7 &= 2 + 5\\
+8 &= 4 \cdot 2 + 0 \cdot 5 & 9 &= 2 \cdot 2 + 1 \cdot 5
+\end{align*}
+we see that $P(6), P(7), P(8),$ and $P(9)$ are true.\\
+We next prove the inductive step. We assume that for each $k \in \mathbb{N}$ such that $k \geq 10$, if $P(k)$ is true, then $P(k + 1)$ is true. We assume that
+\begin{equation*}
+k - 4 = 2x + 5y
+\end{equation*}
+Then,
+\begin{align*}
+k + 1 &= (k - 4) + 5\\
+&= (2x + 5y) + 5\\
+&= 2x + 5(y + 1)
+\end{align*}
+Since $y + 1$ is a non-negative integer, $P(k + 1)$ has been shown to be expressed in the form of $P(n)$. That is, we have proved that if $P(k)$ is true, then $P(k + 1)$ is true. Since we have proved the basis step and the inductive step, we have proved the proposition by the Principle of Mathematical Induction.\hfill$\blacksquare$
+\end{document}

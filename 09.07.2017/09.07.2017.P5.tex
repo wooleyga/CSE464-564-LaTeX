@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, color}
+\linespread{1.5}
+\parindent=0in
+
+\begin{document}
+(5) Do problem Sunstrom 4.2.12 (Use mathematical induction...!)\\
+
+\textbf{*12.} Prove that for each natural number $n$, any set with $n$ elements has $\frac{n(n - 1)}{2}$ two-element subsets.\\
+
+\textbf{Proposition.} For each natural number $n$, any set with $n$ elements has $\frac{n(n - 1)}{2}$ two-element subsets.\\
+\textit{\textbf{Proof.}} We will prove the proposition by mathematical induction. For each $n \in \mathbb{N}$, we let $P(n)$ be \\ \\
+\centerline{Any set with $n$ elements has $\frac{n(n - 1)}{2}$ two-element subsets.}\\
+
+The first step of the proof is to prove that $P(1)$ is true. Notice that $\frac{1(1 - 1)}{2}$ is zero subsets and in a set of only one element, there will be zero two-element subsets. This shows that $P(1)$ is true.\\
+
+The inductive step of the proof will prove that if $P(k)$ is true for each $k \in \mathbb{N}$, then $P(k + 1)$ is true. So we assume that $P(k)$ is true, that is \begin{equation}
+P(k) = \frac{k(k - 1)}{2}
+\end{equation}
+
+We now prove that $P(k + 1)$ is true. That is, we prove
+\begin{align}
+P(k + 1) &= \frac{(k + 1)(k + 1 - 1)}{2}\nonumber \\
+&= \frac{k(k + 1)}{2} 
+\end{align}
+The sequence of two-element subsets for $n$ is\\
+\centerline{$0, 1, 3, 6, 10, 15, ... , \frac{n(n - 1)}{2}, \frac{(n + 1)(n)}{2}$}
+
+You may notice that for term $n$, $P(n) = P(n - 1) + (n - 1)$. Therefore, $P(k + 1) = P(k) + k$. To show this, we add $k$ to equation (\textcolor{blue}{1}). That is,
+\begin{align*}
+P(k) + k &= \frac{k(k - 1)}{2} + k\\
+&= \frac{k^2 - k + 2k}{2}\\
+&= \frac{k^2 + k}{2}\\
+&= \frac{k(k + 1)}{2}
+\end{align*}
+
+Using algebra, we have shown that this result is equal to equation (\textcolor{blue}{2}). That is, we have proved that if $P(k)$ is true, then $P(k + 1)$ is true. Therefore, we have proved the inductive step and consequently, we have proved by the Principle of Mathematical Induction that for each natural number $n$, any set with $n$ elements has $\frac{n(n - 1)}{2}$ two-element subsets.\hfill$\blacksquare$
+
+\end{document}
