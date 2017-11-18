@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, amstext}
+\linespread{1.5}
+\parindent=0in
+
+\begin{document}
+\textbf{\textit{13.1-6}}\\
+What is the largest possible number of internal nodes in a red-black tree with black-height $k$? What is the smallest possible number?\\
+
+We assume that the tree $T$ is a red-black tree and the black-height is $k$, which is the number of black nodes to get from root to the leaves (not counting the root). Since $T$ is a red-black tree, it has the property that it must be a balanced tree.\\
+
+If we assume that $n$ is the total number of nodes in the tree and $\ell$ is the total number of leaves in the tree, then the total number of internal nodes in the tree is
+\begin{align*}
+\hat{n} &= n - \ell\\
+&= (2^0 + 2^1 + 2^2 + \ldots + 2^{h - 1} + 2^h) - 2^h\\
+&= 2^0 + 2^1 + 2^2 + \ldots + 2^{h - 1}\\
+&= \sum_{i=0}^{h - 1} 2^{i}\\
+&= \frac{2^{(h - 1) + 1} - 1}{2 - 1}\\
+&= 2^h - 1.
+\end{align*}
+
+The largest of such tree $T$ will be a full tree and alternate red and black, in the pattern
+
+\centerline{black $\rightarrow$ red $\rightarrow$ black $\rightarrow$ red $\rightarrow \ldots \rightarrow$ black}
+
+for a path strictly down the tree. Since $T$ is a red-black tree, it must be the case that the leaves are black. Ignoring the root, the number of red nodes will be the same as the number of black nodes, where the black nodes at the bottom of the tree are the leaves. Hence, the height with respect to the black-height $k$ is
+\begin{align*}
+h &= k + k + 1\\
+&= 2k + 1.
+\end{align*}
+
+By substitution, the number of internal nodes is
+\begin{align*}
+\hat{n} &= 2^h - 1\\
+&= 2^{2k + 1} - 1
+\end{align*}
+
+for the largest possible red-black tree $T$.\\
+
+Likewise, the smallest of such tree $T$ will be a tree with strictly black nodes. That is, it follows the pattern
+
+\centerline{black $\rightarrow$ black $\rightarrow$ black $\rightarrow$ black $\rightarrow \ldots \rightarrow$ black}
+
+for a path strictly down the tree. Since $T$ is a red-black tree, it has the property that its black-height must be the same for all paths to the leaves. Hence, $T$ must be a full tree, as any path must traverse the same number of black nodes and $T$ is a red-black tree with strictly black nodes. Therefore, the smallest of such tree $T$ will have the property
+\begin{align*}
+h = k + 1.
+\end{align*}
+
+By substitution, the number of internal nodes is
+\begin{align*}
+\hat{n} &= 2^h - 1\\
+&= 2^{k + 1} - 1
+\end{align*}
+
+for the smallest possible red-black tree $T$.
+\end{document}

@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, amstext, graphicx}
+\linespread{1.5}
+\parindent=0in
+
+\graphicspath{ {c:/users/gavin/documents/lightshot/} }
+
+\begin{document}
+\begin{center}
+\includegraphics[scale=0.5]{screenshot_178}\\
+\textbf{Figure 22.2(a)}
+\end{center}
+
+\textbf{\textit{22.2-1}}\\
+Show the $d$ and $\pi$ values that result from running breadth-first search on the undirected graph of Figure 22.2(a), using vertex 3 as the source.\\
+
+We begin at vertex 3 in the graph $G$, which we designate as the source $s$. $s$ has the properties $s.d = 0$ and $s.\pi =$ \textsc{nil}. Each other vertex $u \in G$, $u.d = \infty$ and $u.\pi =$ \textsc{nil}. We begin with the queue $Q$ and we enqueue $s.$ Then, we continue to dequeue elements from $Q$ and enqueue its adjacent neighbors, so long as we have not reached that neighbor before. We set $u.\pi$ as the parent of $u$ and $u.d$ as the distance from $s$.  Hence, we have the following queue
+\begin{align*}
+Q &= [3]\\
+&= [5, 6], \text{where} \; 5.\pi = 6.\pi = 3 \; \text{and} \; 5.d = 6.d = 1\\
+&= [6, 4], \text{where} \; 4.\pi = 5 \; \text{and} \; 4.d = 2\\
+&= [4]\\
+&= [2], \text{where} \; 2.\pi = 4 \; \text{and} \; 2.d = 3\\
+&= \emptyset
+\end{align*}
+
+\end{document}
